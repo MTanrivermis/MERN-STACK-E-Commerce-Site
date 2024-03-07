@@ -1,4 +1,19 @@
+import { useContext } from "react"
+import { CartContext } from "../../context/CartProvider"
+
 const CartTotals = () => {
+
+    const { cartItems } = useContext(CartContext);
+
+    const cartItemTotals = cartItems.map((item) => {
+        const itemTotal = item.price.newPrice * item.quantity;
+
+        return itemTotal
+    })
+    const subTotals = cartItem.tota
+
+    console.log(cartItemTotals)
+
     return (
         <div className="cart-totals">
             <h2>Cart totals

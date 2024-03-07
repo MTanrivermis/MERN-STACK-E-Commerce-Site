@@ -4,9 +4,9 @@ import './App.css'
 // import ProductDetailsPage from './pages/ProductDetailsPage'
 // import BlogPage from './pages/BlogPage'
 // import AuthPage from './pages/AuthPage'
-// import CartPage from './pages/CartPage'
+import CartPage from './pages/CartPage'
 // import ContactPage from './pages/ContactPage'
-import HomePage from './pages/HomePage'
+// import HomePage from './pages/HomePage'
 // import ShopPage from './pages/ShopPage'
 
 
@@ -14,11 +14,11 @@ function App() {
 
   return (
     <React.Fragment>
-      <HomePage />
+      {/* <HomePage /> */}
       {/* <ShopPage /> */}
       {/* <ContactPage /> */}
       {/* <AuthPage /> */}
-      {/* <CartPage /> */}
+      <CartPage />
       {/* <BlogPage /> */}
       {/* <BlogDetailsPage /> */}
       {/* <ProductDetailsPage /> */}

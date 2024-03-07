@@ -11,21 +11,30 @@ const CartProvider = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems))
-
-
     }, [cartItems])
-
 
     const addToCart = (cartItem) => {
         // setCartItems([...cartItems, cartItem]); 1.Yol
-        setCartItems((prevCart) => [...prevCart, cartItem])
+        setCartItems((prevCart) => [...prevCart,
+        {
+            ...cartItem, quantity: cartItem.quantity ? cartItem.quantity : 1
+        },
+        ])
     };
+
+    const removeFromCart = (itemId) => {
+        const filteredCartItems = cartItems.filter((cartItem) => {
+            return cartItem.id !== itemId;
+        })
+        setCartItems(filteredCartItems)
+    }
 
     return (
         <CartContext.Provider
             value={{
                 cartItems,
                 addToCart,
+                removeFromCart,
             }}>
             {children}
         </CartContext.Provider>
