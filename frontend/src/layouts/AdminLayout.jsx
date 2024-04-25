@@ -1,7 +1,11 @@
 
 const AdminLayout = () => {
     return (
-        <div>AdminLayout</div>
+        <div className="admin-layout">
+            <div>Sidebar</div>
+            <div>Header</div>
+            <div>Content</div>
+        </div>
     )
 }
 
