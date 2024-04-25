@@ -76,31 +76,31 @@ router.put("/:couponId", async (req, res) => {
         const couponId = req.params.couponId;
         const updates = req.body;
 
-        const exsitingCoupon = await Coupon.findById(couponId);
+        const existingCoupon = await Coupon.findById(couponId);
 
-        if(!exsitingCoupon){
-            return res.status(404).json({ error: "Category not found"})
+        if(!existingCoupon){
+            return res.status(404).json({ error: "Coupon not found"})
         }
 
-        const updatedCategory = await Category.findByIdAndUpdate(categoryId, updates, {new: true});
-        res.status(200).json(updatedCategory);
+        const updatedCoupon = await Coupon.findByIdAndUpdate(couponId, updates, {new: true});
+        res.status(200).json(updatedCoupon);
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Server error." });
     }
 })
 
-// Kategori Silme (Delete)
-router.delete("/:categoryId", async (req, res) => {
+// Kupon Silme (Delete)
+router.delete("/:couponId", async (req, res) => {
     try {
-        const categoryId = req.params.categoryId;
+        const couponId = req.params.couponId;
 
-        const deletedCategory = await Category.findByIdAndDelete(categoryId);
+        const deletedCoupon = await Coupon.findByIdAndDelete(couponId);
 
-        if(!deletedCategory){
-            return res.status(404).json({ error: "Category not found" })
+        if(!deletedCoupon){
+            return res.status(404).json({ error: "Coupon not found" })
         }
-        res.status(200).json (deletedCategory)
+        res.status(200).json (deletedCoupon)
 
     } catch (error) {
         console.log(error)
