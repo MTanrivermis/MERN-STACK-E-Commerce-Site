@@ -134,8 +134,6 @@ const menuItems = [
                     style = {{ height: "100%" }} 
                     items = { menuItems}
                     />
-                    
-                
                 </Sider>
                 <Layout>
                     <Header>
@@ -144,7 +142,7 @@ const menuItems = [
                         </div>
                     </Header>
                     <Content>
-                        <div className="site-layout-background" style={{ padding: 24, minHeight: 360,}}>{children} asd </div>
+                        <div className="site-layout-background" style={{ padding: "24px 50px", minHeight: 360,}}>{children} asd </div>
                         
                     </Content>
                 </Layout>
