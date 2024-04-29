@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 const Register = () => {
 
    const [formData, setFormData] = useState({
-        username : "",
+        username : "", 
         email: "",
         password: "",
     });
@@ -31,6 +31,7 @@ const navigate = useNavigate()
 
             if(response.ok){
                 const data = await response.json()
+                // const {password, ...rest} = data;
                 localStorage.setItem("user", JSON.stringify(data));
                 message.success("Welcome")
                 navigate("/")
