@@ -1,4 +1,4 @@
-import { Table, message } from "antd";
+import { Button, Popconfirm, Table, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
 
 const AdminUserPage = () => {
@@ -36,6 +36,22 @@ const AdminUserPage = () => {
       dataIndex: "role",
       key: "role",
     },
+    {
+      title: "Actions",
+      dataIndex: "actions",
+      key: "actions",
+      render: (_, record) => (
+        <Popconfirm
+          title="Delete the user"
+          description="Are you sure to delete this user?"
+          okText="Yes"
+          cancelText="No"
+          onConfirm={() => deleteUser(record.email)}
+        >
+          <Button type="primary" danger>Delete</Button>
+        </Popconfirm>
+      ),
+    },
   ];
 
   const fetchUsers = useCallback(async () => {
@@ -47,14 +63,34 @@ const AdminUserPage = () => {
         const data = await response.json();
         setDataSource(data);
       } else {
-        message.error;
+        message.error("Data Fetch Failed",);
       }
     } catch (error) {
-      console.log("Entry Fail", error);
+      console.log("Data Error", error);
     } finally {
       setLoading(false);
     }
   }, [apiUrl]);
+
+
+  const deleteUser = async (userEmail) => {
+    try {
+      const response = await fetch(`${apiUrl}/api/users/${userEmail}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        message.success("User deleted successfully")
+        fetchUsers()
+      } else {
+        message.error("Deletion failed")
+      }
+    } catch (error) {
+      console.log("Delete Error", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   useEffect(() => {
     fetchUsers();

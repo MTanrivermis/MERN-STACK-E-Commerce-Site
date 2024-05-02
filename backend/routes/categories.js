@@ -66,7 +66,7 @@ router.put("/:categoryId", async (req, res) => {
         console.log(error);
         res.status(500).json({ error: "Server error." });
     }
-})
+});
 
 // Kategori Silme (Delete)
 
@@ -85,6 +85,6 @@ router.delete("/:categoryId", async (req, res) => {
         console.log(error)
         res.status(500).json({ error: "Server Error." })
     } 
-})
+});
 
 module.exports = router;
