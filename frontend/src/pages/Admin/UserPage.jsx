@@ -1,7 +1,7 @@
 import { Button, Popconfirm, Table, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
 
-const AdminUserPage = () => {
+const UserPage = () => {
   const [dataSource, setDataSource] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -106,4 +106,4 @@ const AdminUserPage = () => {
   );
 };
 
-export default AdminUserPage;
+export default UserPage;
