@@ -10,6 +10,7 @@ import CartPage from "./pages/CartPage";
 import AuthPage from "./pages/AuthPage";
 import UserPage from "./pages/Admin/UserPage";
 import CategoryPage from "./pages/Admin/Categories/CategoryPage";
+import UpdateCategoryPage from "./pages/Admin/Categories/UpdateCategoryPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path="/admin/*">
         <Route path="users" element={<UserPage />} />
         <Route path="categories" element={<CategoryPage />} />
+        <Route path="categories/update/:id" element={<UpdateCategoryPage />} />
       </Route>
     </Routes>
   );
