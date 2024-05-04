@@ -39,7 +39,7 @@ const CategoryPage = () => {
               Update
             </Button>
           <Popconfirm
-            title="Delete the user"
+            title="Delete the category"
             description="Are you sure to delete this category?"
             okText="Yes"
             cancelText="No"
@@ -89,24 +89,6 @@ const CategoryPage = () => {
       setLoading(false);
     }
   };
-
-//   const updateCategory = async (categoryId) => {
-//     try {
-//       const response = await fetch(`${apiUrl}/api/categories/${categoryId}`, {
-//         method: "UPDATE",
-//       });
-//       if (response.ok) {
-//         message.success("Category updated successfully");
-//         fetchCategories();
-//       } else {
-//         message.error("Deletion failed");
-//       }
-//     } catch (error) {
-//       console.log("Delete Error", error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
 
   useEffect(() => {
     fetchCategories();
