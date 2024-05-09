@@ -8,7 +8,7 @@ const CartTotals = () => {
     const { cartItems } = useContext(CartContext);
 
     const cartItemTotals = cartItems.map((item) => {
-        const itemTotal = item.price.newPrice * item.quantity;
+        const itemTotal = item.price * item.quantity;
 
         return itemTotal
     })
@@ -19,7 +19,7 @@ const CartTotals = () => {
 
     const cargoFee = 15;
 
-    const cartTotals = fastCargoChecked ? (subTotals + cargoFee).toFixed('') : subTotals.toFixed('')
+    const cartTotals = fastCargoChecked ? (subTotals + cargoFee).toFixed(2) : subTotals.toFixed(2)
 
 
     return (

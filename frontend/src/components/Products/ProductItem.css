@@ -5,6 +5,7 @@
     flex-direction: column;
     position: relative;
     flex: 1;
+    gap: 10px;
 }
 
 .products .product-item .product-image {
