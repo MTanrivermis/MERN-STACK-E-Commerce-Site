@@ -62,7 +62,7 @@ const Info = ({ singleProduct }) => {
                   <label 
                   style={{ 
                     backgroundColor: `#${color}`,
-                     }}
+                    }}
                     >
                     <input type="radio" name="product-color" />
                   </label>

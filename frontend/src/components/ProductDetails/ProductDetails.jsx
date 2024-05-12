@@ -18,7 +18,7 @@ const ProductDetails = ({singleProduct}) => {
                         </main>
                     </div>
 
-                    <Tabs />
+                    <Tabs singleProduct={singleProduct}/>
 
 
                 </div>
