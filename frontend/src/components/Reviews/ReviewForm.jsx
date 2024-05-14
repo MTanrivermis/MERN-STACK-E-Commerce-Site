@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const ReviewForm = () => {
+const ReviewForm = ({ singleProduct }) => {
 
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState();
@@ -14,8 +14,14 @@ const ReviewForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const fromData = {
-            rating: rating,
-            review: review,
+            reviews: [
+                //...singleProduct.reviews,
+                {
+                    text: review,
+                    rating: parseInt(rating),
+                    user:user._id
+                }
+            ]
         }
         console.log(fromData)
     }
