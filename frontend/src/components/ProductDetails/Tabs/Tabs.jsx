@@ -3,7 +3,7 @@ import Reviews from "../../Reviews/Reviews"
 import PropTypes from "prop-types"
 import "./Tabs.css"
 
-const Tabs = ({ singleProduct }) => {
+const Tabs = ({ singleProduct, setSingleProduct }) => {
 
     const [activeTab, setActiveTab] = useState("desc")
 
@@ -61,7 +61,7 @@ const Tabs = ({ singleProduct }) => {
                         </tbody>
                     </table>
                 </div>
-                <Reviews active={activeTab == "reviews" ? "content active" : "content"} singleProduct={singleProduct}/>
+                <Reviews active={activeTab == "reviews" ? "content active" : "content"} singleProduct={singleProduct} setSingleProduct={setSingleProduct}/>
             </div>
         </div>
     )
@@ -71,4 +71,5 @@ export default Tabs
 
 Tabs.propTypes = {
     singleProduct: PropTypes.object,
+    setSingleProduct: PropTypes.func,    
   };
