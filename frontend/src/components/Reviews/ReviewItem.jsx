@@ -19,7 +19,7 @@ const ReviewItem = ({ reviewItem }) => {
                 <ul className="comment-star">
                     {Array.from({length: rating}, (_, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                             <i className="bi bi-star-fill"></i>
                         </li>
                         )
