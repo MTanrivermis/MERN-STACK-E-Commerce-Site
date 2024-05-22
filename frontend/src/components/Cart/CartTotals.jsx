@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartProvider";
 import { loadStripe } from "@stripe/stripe-js";
-import { message } from "antd";
+import { Spin, message } from "antd";
 
 const CartTotals = () => {
 
     const [fastCargoChecked, setFastCargoChecked] = useState(false)
+
+    const [loading, setLoading] = useState(false)
 
     const { cartItems } = useContext(CartContext);
 
@@ -31,7 +33,7 @@ const CartTotals = () => {
     const cartTotals = fastCargoChecked ? (subTotals + cargoFee).toFixed(2) : subTotals.toFixed(2)
 
     const handlePayment = async () => {
-
+        setLoading(true)
         if(!user) {
             return message.info("You need to log in to make payment")
         }
@@ -67,7 +69,7 @@ const CartTotals = () => {
         } catch (error) {
             console.log(error)
         }
-
+        setLoading(false)
     };
 
 
@@ -108,7 +110,10 @@ const CartTotals = () => {
                 </tbody>
             </table>
             <div className="checkout">
+                <Spin spinning={loading}>
                 <button className="btn btn-lg" onClick={handlePayment}>Proceed to checkout</button>
+                </Spin>
+                
             </div>
         </div>
     )
