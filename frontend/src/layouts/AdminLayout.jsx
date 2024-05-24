@@ -133,7 +133,7 @@ const AdminLayout = ({ children }) => {
   if (userRole === "admin") {
     return ( 
       <div className="admin-layout">
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout style={{ minHeight: "100vh"}}>
           <Sider width={200} theme="dark">
             <Menu
               mode="vertical"
