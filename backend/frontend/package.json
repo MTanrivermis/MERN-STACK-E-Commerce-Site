@@ -12,6 +12,7 @@
   "dependencies": {
     "@stripe/stripe-js": "^3.4.1",
     "antd": "^5.16.5",
+    "backend": "file:..",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-quill": "^2.0.0",
