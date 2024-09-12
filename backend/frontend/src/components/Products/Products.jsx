@@ -34,12 +34,12 @@ PrevBtn.propTypes = {
 const Products = () => {
     const [products, setProducts] = useState([])
 
-    const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    const apiUrl = "/api/v1";
     
     useEffect(() => {
       const fetchProducts = async () => {
           try {
-            const response = await fetch(`${apiUrl}/api/products`);
+            const response = await fetch(`${apiUrl}/products`);
       
             if (response.ok) {
               const data = await response.json();

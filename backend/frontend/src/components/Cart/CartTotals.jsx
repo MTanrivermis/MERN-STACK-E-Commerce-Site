@@ -11,8 +11,8 @@ const CartTotals = () => {
 
     const { cartItems } = useContext(CartContext);
 
-    const stripePublickKey = import.meta.env.VITE_API_STRIPE_PUBLIC_KEY
-    const apiUrl = import.meta.env.VITE_API_BASE_URL
+    const stripePublickKey = "pk_test_51PIxb8D1wpi8ROVdyqQYfDopB5jCPuBDxuIGPtV16WOCAfq0npcMVGnse1zTKKzKeXdyrIaqUgvPVAoOwjSZuOOf00h6YOURCx"
+    const apiUrl = "/api/v1"
 
     const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
@@ -47,7 +47,7 @@ const CartTotals = () => {
         try {
             const stripe = await loadStripe(stripePublickKey)
 
-            const res= await fetch(`${apiUrl}/api/payment`,{
+            const res= await fetch(`${apiUrl}/payment`,{
                 method: "POST",
                 headers: {"Content-Type" : "application/json"},
                 body: JSON.stringify(body)

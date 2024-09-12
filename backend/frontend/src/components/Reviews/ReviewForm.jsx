@@ -5,7 +5,7 @@ import { message } from "antd";
 const ReviewForm = ({ singleProduct, setSingleProduct }) => {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState();
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+  const apiUrl = "/api/v1";
 
   const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
@@ -33,7 +33,7 @@ const ReviewForm = ({ singleProduct, setSingleProduct }) => {
     };
 
     try {
-        const res = await fetch(`${apiUrl}/api/products/${singleProduct._id}`, {
+        const res = await fetch(`${apiUrl}/products/${singleProduct._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

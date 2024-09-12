@@ -9,12 +9,12 @@ const Categories = () => {
 
     const [categories, setCategories] = useState([]);
 
-    const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    const apiUrl = "/api/v1";
     
   useEffect(() => {
     const fetchCategories = async () => {
         try {
-          const response = await fetch(`${apiUrl}/api/categories`);
+          const response = await fetch(`${apiUrl}/categories`);
     
           if (response.ok) {
             const data = await response.json();

@@ -7,7 +7,7 @@ import "./Search.css";
 const Search = ({ isSearchShow, setIsSearchShow }) => {
   const [searchResult, setSearchResult] = useState(null);
 
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+  const apiUrl = "/api/v1";
 
   const handleCloseModal = () => {4
     setIsSearchShow(false); 
@@ -27,7 +27,7 @@ const Search = ({ isSearchShow, setIsSearchShow }) => {
 
     try {
       const res = await fetch(
-        `${apiUrl}/api/products/search/${productName.trim()}`
+        `${apiUrl}/products/search/${productName.trim()}`
       );
 
       if (!res.ok) {

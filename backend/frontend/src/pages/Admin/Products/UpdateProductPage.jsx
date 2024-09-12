@@ -12,7 +12,7 @@ const UpdateProductPage = () => {
 
   const [form] = Form.useForm();
 
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+  const apiUrl = "/api/v1";
 
   const params = useParams();
   const productId = params.id
@@ -23,8 +23,8 @@ const UpdateProductPage = () => {
       try {
         
         const [categoriesResponse, singleProductResponse] = await Promise.all([
-          fetch(`${apiUrl}/api/categories`),
-          fetch(`${apiUrl}/api/products/${productId}`),
+          fetch(`${apiUrl}/categories`),
+          fetch(`${apiUrl}/products/${productId}`),
         ]);
 
         if(!categoriesResponse.ok || !singleProductResponse.ok){
@@ -78,7 +78,7 @@ const UpdateProductPage = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/api/products/${productId}`, {
+      const response = await fetch(`${apiUrl}/products/${productId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

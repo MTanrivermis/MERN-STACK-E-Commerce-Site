@@ -7,7 +7,7 @@ const CartCoupon = () => {
 
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+  const apiUrl = "/api/v1";
 
   const applyCoupon = async () => {
     if(couponCode.trim().length === 0) {
@@ -15,7 +15,7 @@ const CartCoupon = () => {
     }
 
     try {
-      const res = await fetch(`${apiUrl}/api/coupons/code/${couponCode}`);
+      const res = await fetch(`${apiUrl}/coupons/code/${couponCode}`);
 
       if (!res.ok) {
         return message.warning("Your coupon code is incorrect.");

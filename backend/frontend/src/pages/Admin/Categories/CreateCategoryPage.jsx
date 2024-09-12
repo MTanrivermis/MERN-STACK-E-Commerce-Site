@@ -7,12 +7,12 @@ const CreateCategoryPage = () => {
 
   const [form] = Form.useForm();
 
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+  const apiUrl = "/api/v1";
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/api/categories`, {
+      const response = await fetch(`${apiUrl}/categories`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

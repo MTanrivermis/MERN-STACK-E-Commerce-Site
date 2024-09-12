@@ -13,7 +13,7 @@ const Register = () => {
 
     const navigate = useNavigate()
 
-    const apiUrl = import.meta.env.VITE_API_BASE_URL
+    const apiUrl = "/api/v1"
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -23,7 +23,7 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${apiUrl}/api/auth/register`, {
+            const response = await fetch(`${apiUrl}/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

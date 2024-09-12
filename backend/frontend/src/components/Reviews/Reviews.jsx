@@ -8,14 +8,14 @@ import { message } from "antd";
 const Reviews = ({ active, singleProduct, setSingleProduct }) => {
   const [users, setUsers] = useState([]);
 
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+  const apiUrl = "/api/v1";
 
   const thisReview = [];
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`${apiUrl}/api/users`);
+        const response = await fetch(`${apiUrl}/users`);
 
         if (response.ok) {
           const data = await response.json();
