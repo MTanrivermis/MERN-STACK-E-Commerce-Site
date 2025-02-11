@@ -19,30 +19,21 @@ const connect = async () => {
   }
 };
 
-// CORS configuration
-const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      "https://mern-stack-e-commerce-site.vercel.app",
-      "https://e-commerce-frontend-nine.vercel.app",
-      "http://localhost:5173",
-    ];
-
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
 //middlewares
 app.use(logger("dev"));
 app.use(express.json());
-app.use(cors(corsOptions));
+
+// Enable CORS for all requests
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+// Pre-flight requests
+app.options("*", cors());
 
 // Health check endpoint
 app.get("/", (req, res) => {
@@ -53,7 +44,7 @@ app.get("/", (req, res) => {
 app.use(
   "/api",
   (req, res, next) => {
-    console.log(`${req.method} ${req.path}`); // Log incoming requests
+    console.log(`${req.method} ${req.path}`);
     next();
   },
   mainRoute
