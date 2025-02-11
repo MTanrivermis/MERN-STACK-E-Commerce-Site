@@ -9,7 +9,7 @@ const ProductPage = () => {
 
   const navigate = useNavigate()
 
-  const apiUrl = "/api/v1";
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const columns = [
     {
@@ -76,7 +76,7 @@ const ProductPage = () => {
 
   const deleteProduct = async (productId) => {
     try {
-      const response = await fetch(`${apiUrl}/products/${productId}`, {
+      const response = await fetch(`${apiUrl}/api/products/${productId}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -101,8 +101,8 @@ const ProductPage = () => {
       try {
         
         const [categoriesResponse, productResponse] = await Promise.all([
-          fetch(`${apiUrl}/categories`),
-          fetch(`${apiUrl}/products`),
+          fetch(`${apiUrl}/api/categories`),
+          fetch(`${apiUrl}/api/products`),
         ]);
 
         if(!categoriesResponse.ok || !productResponse.ok){

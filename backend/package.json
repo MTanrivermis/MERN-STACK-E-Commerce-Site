@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "setup-production": "npm install --prefix ./frontend --production=false && npm run build --prefix ./frontend && npm install"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

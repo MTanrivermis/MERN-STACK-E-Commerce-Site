@@ -12,12 +12,12 @@ const UpdateCouponPage = () => {
   const params = useParams();
   const couponId = params.id;
 
-  const apiUrl = "/api/v1";
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/coupons/${couponId}`, {
+      const response = await fetch(`${apiUrl}/api/coupons/${couponId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const UpdateCouponPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${apiUrl}/coupons/${couponId}`);
+      const response = await fetch(`${apiUrl}/api/coupons/${couponId}`);
 
       if (!response.ok) {
         throw new Error("Error fetching data");

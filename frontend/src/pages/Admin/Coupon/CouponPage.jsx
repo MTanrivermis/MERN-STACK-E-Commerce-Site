@@ -9,7 +9,7 @@ const CouponPage = () => {
 
   const navigate = useNavigate()
 
-  const apiUrl = "/api/v1";
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const columns = [
     {
@@ -57,7 +57,7 @@ const CouponPage = () => {
   const fetchCategories = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/coupons`);
+      const response = await fetch(`${apiUrl}/api/coupons`);
 
       if (response.ok) {
         const data = await response.json();
@@ -74,7 +74,7 @@ const CouponPage = () => {
 
   const deleteCoupon = async (couponId) => {
     try {
-      const response = await fetch(`${apiUrl}/coupons/${couponId}`, {
+      const response = await fetch(`${apiUrl}/api/coupons/${couponId}`, {
         method: "DELETE",
       });
       if (response.ok) {

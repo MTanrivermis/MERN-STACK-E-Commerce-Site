@@ -6,7 +6,7 @@ const UserPage = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const apiUrl = "/api/v1";
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const columns = [
     {
@@ -57,7 +57,7 @@ const UserPage = () => {
   const fetchUsers = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/users`);
+      const response = await fetch(`${apiUrl}/api/users`);
 
       if (response.ok) {
         const data = await response.json();
@@ -75,7 +75,7 @@ const UserPage = () => {
 
   const deleteUser = async (userEmail) => {
     try {
-      const response = await fetch(`${apiUrl}/users/${userEmail}`, {
+      const response = await fetch(`${apiUrl}/api/users/${userEmail}`, {
         method: "DELETE",
       });
       if (response.ok) {

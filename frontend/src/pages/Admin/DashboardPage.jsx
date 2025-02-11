@@ -16,7 +16,7 @@ const DashboardPage = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const MY_STRIPE_SECRET_KEY = "sk_test_51PIxb8D1wpi8ROVdbw63aFGUCDh520IpULu9j6I4ZRlQJx5XwrJAJV3dhG6XubL0cg4YFIAQUepjXufJanho7rZJ00urbmOKX4"
+  const MY_STRIPE_SECRET_KEY = import.meta.env.VITE_API_STRIPE_SECRET_KEY;
 
   useEffect(() => {
     const fetchData = async () => {

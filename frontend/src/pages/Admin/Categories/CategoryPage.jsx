@@ -9,7 +9,7 @@ const CategoryPage = () => {
 
   const navigate = useNavigate()
 
-  const apiUrl = "/api/v1";
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const columns = [
     {
@@ -57,7 +57,7 @@ const CategoryPage = () => {
   const fetchCategories = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/categories`);
+      const response = await fetch(`${apiUrl}/api/categories`);
 
       if (response.ok) {
         const data = await response.json();
@@ -74,7 +74,7 @@ const CategoryPage = () => {
 
   const deleteCategory = async (categoryId) => {
     try {
-      const response = await fetch(`${apiUrl}/categories/${categoryId}`, {
+      const response = await fetch(`${apiUrl}/api/categories/${categoryId}`, {
         method: "DELETE",
       });
       if (response.ok) {

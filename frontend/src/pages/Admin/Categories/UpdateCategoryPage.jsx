@@ -10,12 +10,12 @@ const UpdateCategoryPage = () => {
   const params = useParams();
   const categoryId = params.id;
 
-  const apiUrl = "/api/v1";
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/categories/${categoryId}`, {
+      const response = await fetch(`${apiUrl}/api/categories/${categoryId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const UpdateCategoryPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${apiUrl}/categories/${categoryId}`);
+      const response = await fetch(`${apiUrl}/api/categories/${categoryId}`);
 
       if (!response.ok) {
         throw new Error("Error fetching data");

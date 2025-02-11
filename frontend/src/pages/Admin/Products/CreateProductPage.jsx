@@ -9,14 +9,14 @@ const CreateProductPage = () => {
 
   const [form] = Form.useForm();
 
-  const apiUrl = "/api/v1";
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     const fetchCategories = async () => {
       setLoading(true);
 
       try {
-        const response = await fetch(`${apiUrl}/categories`);
+        const response = await fetch(`${apiUrl}/api/categories`);
 
         if (response.ok) {
           const data = await response.json();
@@ -49,7 +49,7 @@ const CreateProductPage = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/products`, {
+      const response = await fetch(`${apiUrl}/api/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
