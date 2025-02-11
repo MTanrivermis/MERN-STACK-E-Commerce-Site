@@ -1,11 +1,11 @@
-import Blogs from "../components/Blogs/Blogs"
+import Blogs from "../components/Blogs/Blogs";
 
 const BlogPage = () => {
-    return (
-        <div className="blog-page">
-            <Blogs />
-        </div>
-    )
-}
+  return (
+    <div className="blog-page">
+      <Blogs />
+    </div>
+  );
+};
 
-export default BlogPage
+export default BlogPage;

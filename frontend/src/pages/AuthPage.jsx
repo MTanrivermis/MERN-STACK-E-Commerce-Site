@@ -1,12 +1,11 @@
-import Auth from "../components/Auth/Auth"
-
+import Auth from "../components/Auth/Auth";
 
 const AuthPage = () => {
-    return (
-        <>
-            <Auth />
-        </>
-    )
-}
+  return (
+    <>
+      <Auth />
+    </>
+  );
+};
 
-export default AuthPage
+export default AuthPage;
