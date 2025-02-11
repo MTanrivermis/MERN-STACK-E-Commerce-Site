@@ -49,28 +49,40 @@ app.get("/", (req, res) => {
   res.json({ message: "API is running" });
 });
 
-// API routes with error handling
-app.use("/api", async (req, res, next) => {
-  try {
-    await mainRoute(req, res, next);
-  } catch (error) {
-    next(error);
-  }
-});
+// API routes
+app.use(
+  "/api",
+  (req, res, next) => {
+    console.log(`${req.method} ${req.path}`); // Log incoming requests
+    next();
+  },
+  mainRoute
+);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error("Error:", err);
+  console.error("Error details:", {
+    message: err.message,
+    stack: err.stack,
+    path: req.path,
+    method: req.method,
+  });
+
   res.status(500).json({
     error: "Something went wrong!",
     message: err.message,
-    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+    path: req.path,
   });
 });
 
 // 404 handler
 app.use((req, res) => {
-  res.status(404).json({ error: "Not Found", path: req.path });
+  console.log(`404 Not Found: ${req.method} ${req.path}`);
+  res.status(404).json({
+    error: "Not Found",
+    path: req.path,
+    method: req.method,
+  });
 });
 
 // Start server
@@ -85,5 +97,16 @@ const startServer = async () => {
     process.exit(1);
   }
 };
+
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Promise Rejection:", err);
+});
+
+// Handle uncaught exceptions
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  process.exit(1);
+});
 
 startServer();
